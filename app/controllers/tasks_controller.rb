@@ -24,11 +24,11 @@ class TasksController < ApplicationController
   end
 
   def edit
-     @task = Task.find(params[:id])
+      @task = Task.find(params[:id])
   end
 
   def update
-    @task = Task.find(params[:id])
+      @task = Task.find(params[:id])
 
   if @task.update(task_params)
     flash[:success] = 'タスクが編集されました'
@@ -41,12 +41,14 @@ class TasksController < ApplicationController
 
   def destroy
     @task = Task.find(params[:id])
-  @task.destroy
+    @task.destroy
 
-  flash[:success] = 'タスクが削除されました'
-  redirect_to tasks_path
+    flash[:success] = 'タスクが削除されました'
+    redirect_to tasks_path
   end
 end
+
+private
 
 def task_params
   params.require(:task).permit(:content)
