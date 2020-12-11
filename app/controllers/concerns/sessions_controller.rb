@@ -22,15 +22,15 @@ class SessionsController < ApplicationController
   
   private
 
-  def login(email, password)
+ def login(email, password)
     @user = User.find_by(email: email)
     if @user && @user.authenticate(password)
-      # ログイン成功
-      session[:user_id] = @user.id
+      #　ログイン成功(sessionとcookieのログイン情報を照合)
+      session[:user_id] = @user.id 
       return true
     else
-      # ログイン失敗
+      #ログイン失敗
       return false
     end
-  end
+ end
 end
